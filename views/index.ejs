@@ -1,3 +1,8 @@
 <%- contentFor('page') %>
+
 <h1><%= title %></h1>
-<p>Welcome to <%= title %></p>
+<% if (typeof posts!=='undefined') { %>
+<p>WiP</p>
+<% } else { %>
+<p>There are no posts!</p>
+<% } %>

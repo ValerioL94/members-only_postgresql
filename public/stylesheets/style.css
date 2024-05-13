@@ -29,7 +29,7 @@ a:focus {
 }
 header {
   text-align: center;
-  border-bottom: 2px solid;
+  box-shadow: 1px 1px 3px 2px grey;
   background-color: lightseagreen;
 }
 header a {
@@ -94,7 +94,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border-top: 2px solid;
+  box-shadow: -1px -1px 3px 2px grey;
   background-color: lightseagreen;
 }
 footer a {
