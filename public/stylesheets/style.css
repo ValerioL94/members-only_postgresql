@@ -1,8 +1,110 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  font:
+    18px 'Lucida Grande',
+    Helvetica,
+    Arial,
+    sans-serif;
 }
 
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 a {
-  color: #00B7FF;
+  color: rgb(70, 70, 255);
+  transition: all ease-in-out 0.1s;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: crimson;
+  font-weight: 600;
+  outline: none;
+  padding-left: 5px;
+}
+header {
+  text-align: center;
+  border-bottom: 2px solid;
+  background-color: lightseagreen;
+}
+header a {
+  color: black;
+}
+header a:hover,
+header a:focus {
+  padding: inherit;
+}
+main {
+  height: 100%;
+  display: flex;
+}
+
+#dynamic-page {
+  width: 100%;
+  padding: 25px;
+}
+
+.form-group {
+  width: 100%;
+}
+.form-control {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 15px;
+  border: 2px solid;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+.form-control:hover,
+.form-control:focus {
+  border: 2px solid blue;
+  outline: none;
+}
+
+.form-submit {
+  height: 30px;
+  width: 80px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: blue;
+}
+.form-submit:hover,
+.form-submit:focus {
+  background-color: blue;
+  color: white;
+  border-color: blue;
+  outline: none;
+}
+.errors-list {
+  color: crimson;
+  font-weight: 600;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-top: 2px solid;
+  background-color: lightseagreen;
+}
+footer a {
+  transition: transform ease-in-out 0.5s;
+}
+footer a:hover,
+footer a:focus {
+  padding: 0;
+  transform: scale(1.25);
+}
+.logo {
+  height: 25px;
 }
