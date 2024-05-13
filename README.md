@@ -1,4 +1,4 @@
-# memebrs-only
+# members-only
 
 Building a nodejs/express app where users can read and write posts.
 

@@ -1,25 +1,26 @@
 {
-  "name": "express-template",
+  "name": "members-only",
   "version": "1.0.0",
-  "description": "express-template",
+  "description": "Building a nodejs/express app where users can read and write posts.",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www",
+    "dev": "node --watch --env-file=.env ./bin/www",
     "server": "DEBUG=express-template:* npm run dev",
     "format": "npx prettier --plugin=prettier-plugin-ejs --write ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ValerioL94/express-template.git"
+    "url": "git+https://github.com/ValerioL94/members-only.git"
   },
   "author": "ValerioL94",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ValerioL94/express-template/issues"
+    "url": "https://github.com/ValerioL94/members-only/issues"
   },
-  "homepage": "https://github.com/ValerioL94/express-template#readme",
+  "homepage": "https://github.com/ValerioL94/members-only#readme",
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "^3.1.10",
@@ -32,7 +33,6 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
     "prettier-plugin-ejs": "^1.0.3"
   }
