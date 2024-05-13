@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "node --watch --env-file=.env ./bin/www",
-    "server": "DEBUG=express-template:* npm run dev",
+    "server": "DEBUG=members-only:* npm run dev",
     "format": "npx prettier --plugin=prettier-plugin-ejs --write ."
   },
   "repository": {
