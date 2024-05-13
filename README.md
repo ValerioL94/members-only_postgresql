@@ -1,6 +1,7 @@
 # memebrs-only
 
 Building a nodejs/express app where users can read and write posts.
+
 Specifically: 
 - Unregistered users can only read anonymous messages.
 - Registered users can write/read anonymous messages.
