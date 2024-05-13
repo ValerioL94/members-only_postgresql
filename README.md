@@ -1,16 +1,8 @@
-# express-template
+# memebrs-only
 
-Template repository for express
-
-Dependencies:
-
-- express generator ( npx express generator --view=ejs, npm install, DEBUG=express-template:\* npm start)
-- express-async-handler
-- express-ejs-layouts
-- express-validator
-- mongoose
-
-Dev Dependencies:
-
-- nodemon
-- prettier-plugin-ejs
+Building a nodejs/express app where users can read and write posts.
+Specifically: 
+- Unregistered users can only read anonymous messages.
+- Registered users can write/read anonymous messages.
+- Registered users with the status of club-member can write/read posts AND they can see authors' names and posts' titles.
+- Registered users with the status of admin have the same privileges as club-members, additionally they can delete posts.
