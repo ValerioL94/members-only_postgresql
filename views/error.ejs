@@ -1,3 +1,9 @@
+<%- contentFor('page') %>
+
 <h1><%= message %></h1>
 <h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<% if (error.status === 404) { %>
+<p>Oops! This page does not exist!</p>
+<% } else { %>
+<p>Working on it, sorry!</p>
+<% } %>
