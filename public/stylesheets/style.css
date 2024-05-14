@@ -64,7 +64,7 @@ main {
 }
 .form-control:hover,
 .form-control:focus {
-  border: 2px solid blue;
+  border: 2px solid lightseagreen;
   outline: none;
 }
 
@@ -75,13 +75,13 @@ main {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  color: blue;
+  color: lightseagreen;
 }
 .form-submit:hover,
 .form-submit:focus {
-  background-color: blue;
+  background-color: lightseagreen;
   color: white;
-  border-color: blue;
+  border-color: lightseagreen;
   outline: none;
 }
 .errors-list {
@@ -97,14 +97,26 @@ footer {
   box-shadow: -1px -1px 3px 2px grey;
   background-color: lightseagreen;
 }
-footer a {
-  transition: transform ease-in-out 0.5s;
-}
+
 footer a:hover,
 footer a:focus {
   padding: 0;
-  transform: scale(1.25);
 }
 .logo {
   height: 25px;
+}
+.pulse:hover {
+  animation: pulse ease-in-out 2.75s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
