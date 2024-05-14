@@ -5,5 +5,5 @@ const { body, validationResult } = require('express-validator');
 
 exports.index = asyncHandler(async (req, res, next) => {
   const allPosts = await Post.find().exec();
-  res.render('index', { title: 'Homepage' });
+  res.render('index', { title: 'Homepage', user: req.user });
 });

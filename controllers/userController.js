@@ -3,6 +3,7 @@ const User = require('../models/user');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const passport = require('passport');
+const bcrypt = require('bcryptjs');
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
   res.render('sign_up', { title: 'Sign-up' });
@@ -33,45 +34,41 @@ exports.sign_up_post = [
   body('password', 'Password should contain at least 5 characters').isLength({
     min: 5,
   }),
-  body('passwordConfirmation').custom((value, { req }) => {
+  body('passwordConfirmation', 'Password mismatch').custom((value, { req }) => {
     return value === req.body.password;
   }),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     const user = new User({
-      first_name: req.body.name,
+      first_name: req.body.first_name,
       last_name: req.body.last_name,
       username: req.body.username,
     });
     if (!errors.isEmpty()) {
       return res.render('sign_up', {
         title: 'Sign-up',
-        user,
+        user: user,
         errors: errors.array(),
       });
     }
-    bcrypt.hash(req.body.password),
-      10,
-      async (err, hashedPassword) => {
-        if (err) {
-          return next(err);
-        }
-        user.password = hashedPassword;
-      };
-    await user.save();
-    res.redirect('/');
+    bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
+      if (err) {
+        return next(err);
+      }
+      user.password = hashedPassword;
+      await user.save();
+      res.redirect('log-in');
+    });
   }),
 ];
 
 exports.log_in_get = asyncHandler(async (req, res, next) => {
   res.render('log_in', { title: 'Log-in' });
 });
-exports.log_in_post = asyncHandler(async (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/clubhouse/user/log-in',
-  });
+exports.log_in_post = passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: 'log-in',
 });
 
 exports.log_out_get = asyncHandler(async (req, res, next) => {

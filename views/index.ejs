@@ -1,11 +1,15 @@
 <%- contentFor('page') %>
 
 <h1><%= title %></h1>
+<% if (typeof user!=='undefined') { %>
+<h1>WELCOME BACK <%= user.fullname %></h1>
+<a href="/clubhouse/user/log-out">LOG OUT</a>
+<% } else { %>
+<p>Don't have an account? <a href="/clubhouse/user/sign-up">Sign up here!</a></p>
+<p>Already have an account? <a href="/clubhouse/user/log-in">Log in here!</a></p>
+<% } %>
 <% if (typeof posts!=='undefined') { %>
 <p>WiP</p>
 <% } else { %>
 <p>There are no posts!</p>
 <% } %>
-
-<p>Don't have an account? <a href="/clubhouse/user/sign-up">Sign up here</a></p>
-<p>Already have an account? <a href="/clubhouse/user/log-in">Log in here!</a></p>

@@ -10,6 +10,8 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
+const User = require('./models/user');
+const Post = require('./models/post');
 
 const indexRouter = require('./routes/index');
 const clubhouseRouter = require('./routes/clubhouse');

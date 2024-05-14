@@ -1,16 +1,17 @@
 <%- contentFor('page') %>
 
+<p>Already have an account? <a href="log-in">Log in here!</a></p>
 <h1><%= title %></h1>
 <form method="POST">
   <div class="form-group">
     <label for="first_name">First name:</label>
-    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="John" required />
+    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="John" value="<%= typeof user=='undefined' ? '' : user.first_name %>" required />
     <label for="last_name">Last name:</label>
-    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Doe" required />
+    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Doe" value="<%= typeof user=='undefined' ? '' : user.last_name %>" required />
   </div>
   <div class="form-group">
-    <label for="username">Username:</label>
-    <input type="email" class="form-control" id="username" name="username" placeholder="johndoe@gmail.com" required />
+    <label for="username">Username (your E-mail):</label>
+    <input type="email" class="form-control" id="username" name="username" placeholder="johndoe@gmail.com" value="<%= typeof user=='undefined' ? '' : user.username %>" required />
     <label for="password">Password:</label>
     <input type="password" class="form-control" id="password" name="password" required />
     <label for="passwordConfirmation">Confirm password:</label>
