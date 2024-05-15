@@ -15,4 +15,8 @@ router.get('/user/join-the-club', user_controller.join_get);
 router.post('/user/join-the-club', user_controller.join_post);
 router.get('/user/admin-page', user_controller.admin_get);
 router.post('/user/admin-page', user_controller.admin_post);
+
+router.get('/post/new-message', post_controller.create_message_get);
+router.post('/post/new-message', post_controller.create_message_post);
+
 module.exports = router;
