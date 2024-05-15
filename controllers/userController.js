@@ -37,7 +37,6 @@ exports.sign_up_post = [
   body('passwordConfirmation', 'Password mismatch').custom((value, { req }) => {
     return value === req.body.password;
   }),
-
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     const newUser = new User({
@@ -124,7 +123,10 @@ exports.admin_post = [
         errors: errors.array(),
       });
     } else {
-      await User.findByIdAndUpdate(req.user.id, { status: 'Admin' });
+      await User.findByIdAndUpdate(req.user.id, {
+        status: 'Admin',
+        isAdmin: true,
+      });
       res.redirect('admin-page');
     }
   }),
