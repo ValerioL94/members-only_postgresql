@@ -106,5 +106,26 @@ exports.join_post = [
 ];
 
 exports.admin_get = asyncHandler(async (req, res, next) => {
-  res.render('admin.ejs', { title: 'Admin Page', user: req.user });
+  res.render('admin.ejs', { title: 'Join the Admins', user: req.user });
 });
+
+exports.admin_post = [
+  body('adminPassword', 'Wrong admin password')
+    .trim()
+    .isLength({ min: 1 })
+    .escape()
+    .equals(process.env.ADMIN_PSW),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render('admin.ejs', {
+        title: 'Join the Admins',
+        user: req.user,
+        errors: errors.array(),
+      });
+    } else {
+      await User.findByIdAndUpdate(req.user.id, { status: 'Admin' });
+      res.redirect('admin-page');
+    }
+  }),
+];
