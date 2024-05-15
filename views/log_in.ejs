@@ -2,7 +2,7 @@
 
 <h1 style="text-align: center;"><%= title %></h1>
 <% if (typeof user!=='undefined') { %>
-<h2>Welcome back <%= user.fullname %></h2>
+<h2>Welcome back<span style="color: crimson;"> <%= user.fullname %></span></h2>
 <a href="log-out">LOG OUT</a>
 <% } else { %>
 <p style="text-align: end;">Don't have an account? <a href="sign-up">Sign up here</a></p>

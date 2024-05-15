@@ -68,8 +68,8 @@ main {
 }
 
 .form-submit {
-  height: 30px;
-  width: 80px;
+  min-height: 30px;
+  min-width: 80px;
   border-radius: 5px;
   font-size: 0.9rem;
   font-weight: 600;
