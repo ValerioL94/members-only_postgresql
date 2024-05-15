@@ -7,18 +7,19 @@
 <% } %>
 <% } %>
 <% if (typeof posts!=='undefined' && posts.length) { %>
-<% posts.forEach(post => { %>
- <div class="user-post">
-     <h1>Title: <%= post.title %></h1>
-     <p>Comment: <%= post.comment %></p>
-     <p>Username: <%= post.user.fullname %></p>
-     <p>Time: <%= post.timestamp.toLocaleString() %></p>
-  <% if (typeof user!=='undefined' && user.isAdmin) { %>
-    <p>DELETE THIS MESSAGE</p>
-    <a href="post.url/delete">Delete MESSAGE</a>
-   <% } %>
- </div>
-<% }) %>
+<div id="posts-wrapper">
+    <% posts.forEach(post => { %>
+     <div class="user-post">
+         <p>Author: <%= typeof user!=='undefined' && user!=='Anonymous' ? post.user.fullname : 'Anonymous' %></p>
+         <p>Title: <%= post.title %></p>
+         <p>Comment: <%= post.comment %></p>
+         <p>Time: <%= post.timestamp.toLocaleString() %></p>
+      <% if (typeof user!=='undefined' && user.isAdmin) { %>
+        <a href="post.url/delete">DELETE MESSAGE</a>
+       <% } %>
+     </div>
+    <% }) %>
+</div>
 <% } else { %>
 <p>There are no messages?!</p>
 <% if (typeof user !=='undefined') { %>
