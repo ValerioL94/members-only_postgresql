@@ -23,11 +23,5 @@
   </div>
   <button class="form-submit" type="submit">Sign Up</button>
 </form>
-<% if (typeof errors!=='undefined') { %>
-<ul class="errors-list">
-  <% errors.forEach(error => { %>
-  <li><%= error.msg %></li>
-  <% }) %>
-</ul>
-<% } %>
+<%- include('./partials/errors-list') %>
 <% } %>
