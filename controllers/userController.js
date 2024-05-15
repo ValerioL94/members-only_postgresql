@@ -6,7 +6,7 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
-  res.render('sign_up', { title: 'Sign-up' });
+  res.render('sign_up', { title: 'Sign-up', user: req.user });
 });
 
 exports.sign_up_post = [
@@ -20,19 +20,19 @@ exports.sign_up_post = [
     .isLength({ min: 1 })
     .escape()
     .withMessage('Last name must contain at least 1 character'),
-  body('username')
+  body('email')
     .trim()
     .escape()
     .isEmail()
     .withMessage('Enter a valid E-mail')
     .custom(async (value) => {
-      const email = await User.findOne({ username: value });
-      if (email) {
+      const user = await User.findOne({ email: value });
+      if (user) {
         throw new Error('E-mail already in use');
       }
     }),
-  body('password', 'Password should contain at least 5 characters').isLength({
-    min: 5,
+  body('password', 'Password should contain at least 8 characters').isLength({
+    min: 8,
   }),
   body('passwordConfirmation', 'Password mismatch').custom((value, { req }) => {
     return value === req.body.password;
@@ -40,15 +40,15 @@ exports.sign_up_post = [
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
-    const user = new User({
+    const newUser = new User({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      username: req.body.username,
+      email: req.body.email,
     });
     if (!errors.isEmpty()) {
       return res.render('sign_up', {
         title: 'Sign-up',
-        user: user,
+        newUser,
         errors: errors.array(),
       });
     }
@@ -56,15 +56,15 @@ exports.sign_up_post = [
       if (err) {
         return next(err);
       }
-      user.password = hashedPassword;
-      await user.save();
+      newUser.password = hashedPassword;
+      await newUser.save();
       res.redirect('log-in');
     });
   }),
 ];
 
 exports.log_in_get = asyncHandler(async (req, res, next) => {
-  res.render('log_in', { title: 'Log-in' });
+  res.render('log_in', { title: 'Log-in', user: req.user });
 });
 exports.log_in_post = passport.authenticate('local', {
   successRedirect: '/',
