@@ -63,13 +63,14 @@ nav a {
 #posts-wrapper {
   display: flex;
   flex-direction: column;
-  width: 100%;
   gap: 20px;
 }
 .user-post {
   border: 2px solid black;
   border-radius: 10px;
   padding: 15px;
+  width: 600px;
+  align-self: center;
 }
 
 .form-group {
