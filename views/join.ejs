@@ -1,0 +1,24 @@
+<%- contentFor('page') %>
+
+<h1 style="text-align: center"><%= title %></h1>
+
+<% if (typeof user==='undefined') { %>
+<p>You're not even logged in and you wanna join the club? I don't think so.</p>
+<% } else { %>
+<% if (user.status==='anon') { %>
+<% if (typeof errors==='undefined') { %>
+<form method="post">
+  <div class="form-group">
+    <label for="secretPassword">What is the name of the first Lord of Cinder?</label>
+    <input type="password" class="form-control" id="secretPassword" name="secretPassword" required>
+  </div>
+  <button type="submit" class="form-submit">Submit</button>
+</form>
+<% } else { %>
+<p>See you next time.</p>
+<%- include('./partials/errors-list') %>
+<% } %>
+<% } else { %>
+<p>Welcome to the Club.</p>
+<% } %>
+<% } %>

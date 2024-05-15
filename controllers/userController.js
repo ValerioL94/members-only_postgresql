@@ -79,3 +79,32 @@ exports.log_out_get = asyncHandler(async (req, res, next) => {
     res.redirect('/');
   });
 });
+
+exports.join_get = asyncHandler(async (req, res, next) => {
+  res.render('join.ejs', { title: 'Join the Club', user: req.user });
+});
+exports.join_post = [
+  body('secretPassword', 'Wrong secret password')
+    .trim()
+    .isLength({ min: 1 })
+    .toLowerCase()
+    .escape()
+    .equals(process.env.SECRET_PSW),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.render('join.ejs', {
+        title: 'Join the Club',
+        user: req.user,
+        errors: errors.array(),
+      });
+    } else {
+      await User.findByIdAndUpdate(req.user.id, { status: 'member' });
+      res.redirect('join-the-club');
+    }
+  }),
+];
+
+exports.admin_get = asyncHandler(async (req, res, next) => {
+  res.render('admin.ejs', { title: 'Admin Page', user: req.user });
+});
