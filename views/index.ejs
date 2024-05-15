@@ -6,8 +6,19 @@
 <p>Wanna join the club? You can try <a href="/clubhouse/user/join-the-club">here</a>.</p>
 <% } %>
 <% } %>
-<% if (typeof posts!=='undefined') { %>
-<p>WiP</p>
+<% if (typeof posts!=='undefined' && posts.length) { %>
+<% posts.forEach(post => { %>
+ <div class="user-post">
+     <h1>Title: <%= post.title %></h1>
+     <p>Comment: <%= post.comment %></p>
+     <p>Username: <%= post.user.fullname %></p>
+     <p>Time: <%= post.timestamp.toLocaleString() %></p>
+  <% if (typeof user!=='undefined' && user.isAdmin) { %>
+    <p>DELETE THIS MESSAGE</p>
+    <a href="post.url/delete">Delete MESSAGE</a>
+   <% } %>
+ </div>
+<% }) %>
 <% } else { %>
 <p>There are no messages?!</p>
 <% if (typeof user !=='undefined') { %>
