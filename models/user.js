@@ -10,8 +10,9 @@ const UserSchema = new Schema({
     type: String,
     required: true,
     enum: ['Anonymous', 'Exclusive-member', 'Admin'],
-    default: 'anon',
+    default: 'Anonymous',
   },
+  isAdmin: { type: Boolean, default: false },
 });
 
 UserSchema.virtual('fullname').get(function () {

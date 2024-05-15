@@ -99,7 +99,7 @@ exports.join_post = [
         errors: errors.array(),
       });
     } else {
-      await User.findByIdAndUpdate(req.user.id, { status: 'member' });
+      await User.findByIdAndUpdate(req.user.id, { status: 'Exclusive-member' });
       res.redirect('join-the-club');
     }
   }),
