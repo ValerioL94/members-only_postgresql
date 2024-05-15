@@ -3,7 +3,7 @@ body {
   height: 100%;
   margin: 0;
   font:
-    18px 'Lucida Grande',
+    18px 'system-ui',
     Helvetica,
     Arial,
     sans-serif;
@@ -25,7 +25,6 @@ a:focus {
   color: crimson;
   font-weight: 600;
   outline: none;
-  padding-left: 5px;
 }
 header {
   text-align: center;
@@ -98,10 +97,6 @@ footer {
   background-color: lightseagreen;
 }
 
-footer a:hover,
-footer a:focus {
-  padding: 0;
-}
 .logo {
   height: 25px;
 }
