@@ -1,0 +1,23 @@
+<%- contentFor('page') %>
+
+<h1 style="text-align: center"><%= title %></h1>
+<% if (typeof user==='undefined' || user.status==='Anonymous') { %>
+<p>Only exclusive-members can be admins.</p>
+<% } else { %>
+<% if (user.status==='Exclusive-member') { %>
+  <% if (typeof errors==='undefined') { %>
+<form method="post">
+  <div class="form-group">
+    <label for="adminPassword">Admin password:</label>
+    <input type="password" class="form-control" id="adminPassword" name="adminPassword" required>
+  </div>
+  <button type="submit" class="form-submit">Submit</button>
+</form>
+<% } else { %>
+  <p>If you don't know the password, you can go.</p>
+<%- include('./partials/errors-list') %>
+<% } %>
+<% } else { %>
+<p>Remember, with great power comes great responsibility</p>
+<% } %>
+<% } %>
