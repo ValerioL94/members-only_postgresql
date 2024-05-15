@@ -2,7 +2,7 @@
 
 <h1 style="text-align: center"><%= title %></h1>
 <% if (typeof user==='undefined' || user.status==='Anonymous') { %>
-<p>Only exclusive-members can be admins.</p>
+<p>Only exclusive-members can be admins, go <a href="/">back</a> .</p>
 <% } else { %>
 <% if (user.status==='Exclusive-member') { %>
   <% if (typeof errors==='undefined') { %>
