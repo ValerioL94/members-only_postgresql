@@ -6,8 +6,11 @@
     <h2>User:<span style="color: crimson;"> <%= user.fullname %></span> - Status: <span style="color: crimson;"> <%= user.status %></span></h2>
     <a href="/clubhouse/user/log-out">LOG OUT</a>
 </div>
-<% if (user.status==='anon') { %>
+<% if (user.status==='Anonymous') { %>
     <a href="/clubhouse/user/join-the-club">Join the club</a>
+<% } %>
+<% if (user.status==='Exclusive-member') { %>
+ <a href="/clubhouse/user/admin-page">Wanna join the admins?</a>
 <% } %>
 <% } else { %>
 <p style="text-align: end;">Don't have an account? <a href="/clubhouse/user/sign-up">Sign up here!</a></p>
