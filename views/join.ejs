@@ -1,8 +1,7 @@
 <%- contentFor('page') %>
 
-<h1 style="text-align: center"><%= title %></h1>
 <% if (typeof user==='undefined') { %>
-<p>You're not even logged in and you wanna join the club? I don't think so, go <a href="/">back</a> now.</p>
+<p>You're not even logged in and you wanna join the club? I don't think so.</p>
 <% } else { %>
 <% if (user.status==='Anonymous') { %>
 <% if (typeof errors==='undefined') { %>
@@ -14,11 +13,11 @@
   <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-<p>You're not ready to join the club, go <a href="/">back</a>.</p>
+<p>You're not ready to join the club.</p>
 <%- include('./partials/errors-list') %>
 <% } %>
 <% } else { %>
 <p>Welcome to the Club.</p>
-<a href="/">Go back to homepage</a>
+<p>Posts are no longer anonymous to you.</p>
 <% } %>
 <% } %>

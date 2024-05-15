@@ -1,17 +1,14 @@
 <%- contentFor('page') %>
 
-<h1 style="text-align: center;"><%= title %></h1>
 <% if (typeof user!=='undefined') { %>
 <h2>Welcome back<span style="color: crimson;"> <%= user.fullname %></span></h2>
-<a href="log-out">LOG OUT</a>
 <% } else { %>
-<p style="text-align: end;">Don't have an account? <a href="sign-up">Sign up here</a></p>
 <form method="post">
   <div class="form-group">
     <label for="email">E-mail:</label>
-    <input type="email" class="form-control" name="email" placeholder="johndoe@gmail.com" />
+    <input type="email" class="form-control" name="email" id="email" placeholder="johndoe@gmail.com" required/>
     <label for="password">Password:</label>
-    <input type="password" autocomplete="current-password" class="form-control" name="password" id="password" />
+    <input type="password" autocomplete="current-password" class="form-control" name="password" id="password" required/>
   </div>
   <button class="form-submit" type="submit">Log in</button>
 </form>

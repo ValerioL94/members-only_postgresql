@@ -1,23 +1,14 @@
 <%- contentFor('page') %>
 
-<h1 style="text-align: center;"><%= title %></h1>
 <% if (typeof user!=='undefined') { %>
-<div style="display: flex; align-items: center; justify-content: space-between;">
-    <h2>User:<span style="color: crimson;"> <%= user.fullname %></span> - Status: <span style="color: crimson;"> <%= user.status %></span></h2>
-    <a href="/clubhouse/user/log-out">LOG OUT</a>
-</div>
+<h2>User:<span style="color: crimson;"> <%= user.fullname %></span> - Status: <span style="color: crimson;"> <%= user.status %></span></h2>
 <% if (user.status==='Anonymous') { %>
-    <a href="/clubhouse/user/join-the-club">Join the club</a>
+ <p>Wanna join the club? You can try <a href="/clubhouse/user/join-the-club">here</a>.</p>
 <% } %>
-<% if (user.status==='Exclusive-member') { %>
- <a href="/clubhouse/user/admin-page">Wanna join the admins?</a>
-<% } %>
-<% } else { %>
-<p style="text-align: end;">Don't have an account? <a href="/clubhouse/user/sign-up">Sign up here!</a></p>
-<p style="text-align: end;">Already have an account? <a href="/clubhouse/user/log-in">Log in here!</a></p>
 <% } %>
 <% if (typeof posts!=='undefined') { %>
 <p>WiP</p>
 <% } else { %>
-<p>There are no posts!</p>
+<p>There are no posts?!</p>
+<p>Be the first to add one! <a href="/clubhouse/post/create-post">New post</a></p>
 <% } %>

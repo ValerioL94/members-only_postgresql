@@ -28,7 +28,7 @@ a:focus {
 }
 header {
   text-align: center;
-  box-shadow: 1px 1px 3px 2px grey;
+  border-bottom: 2px solid grey;
   background-color: lightseagreen;
 }
 header a {
@@ -40,11 +40,26 @@ header a:focus {
 }
 main {
   height: 100%;
+}
+
+nav {
   display: flex;
 }
 
-#dynamic-page {
+nav a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
   width: 100%;
+  border-width: 0px 1px 2px 1px;
+  border-style: solid;
+  border-color: grey;
+  color: black;
+  background-color: antiquewhite;
+}
+
+#dynamic-page {
   padding: 25px;
 }
 
@@ -93,7 +108,7 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  box-shadow: -1px -1px 3px 2px grey;
+  border-top: 2px solid grey;
   background-color: lightseagreen;
 }
 

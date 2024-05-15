@@ -1,8 +1,7 @@
 <%- contentFor('page') %>
 
-<h1 style="text-align: center"><%= title %></h1>
 <% if (typeof user==='undefined' || user.status==='Anonymous') { %>
-<p>Only exclusive-members can be admins, go <a href="/">back</a> .</p>
+<p>Only exclusive-members can be admins...provided they know the password.</p>
 <% } else { %>
 <% if (user.status==='Exclusive-member') { %>
   <% if (typeof errors==='undefined') { %>
@@ -14,11 +13,11 @@
   <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-  <p>If you don't know the password, you can go <a href="/">home</a>.</p>
+  <p>You simply don't know the password, you have no reason to be here.</p>
 <%- include('./partials/errors-list') %>
 <% } %>
 <% } else { %>
-<p>Remember, with great power comes great responsibility</p>
-<a href="/">Go back to homepage</a>
+<p>Remember, with great power comes great responsibility.</p>
+<p>You can delete posts now but it doesn't mean that you have to.</p>
 <% } %>
 <% } %>

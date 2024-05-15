@@ -1,30 +1,43 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
 
-  <body>
-    <div id="content">
-      <header>
-        <h1><a href="/">Members Only</a></h1>
-      </header>
-      <main>
-        <section id="dynamic-page"><%- page %></section>
-      </main>
-      <footer>
-        <p>Copyright © 2024 ValerioL94</p>
-        <a href="https://github.com/ValerioL94">
-          <img
-            class="logo pulse"
-            src="/images/github-mark.svg"
-            alt="github logo"
-          />
-        </a>
-      </footer>
-    </div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <div id="content">
+    <header>
+      <h1><a href="/">Members Only</a></h1>
+    </header>
+    <main>
+      <nav>
+        <a href="/">Home</a>
+        <% if (typeof user==='undefined') { %>
+        <a href="/clubhouse/user/sign-up">Sign up</a>
+        <a href="/clubhouse/user/log-in">Log in</a>
+        <% } %>
+        <a href="/clubhouse/user/join-the-club">Join the Club</a>
+        <a href="/clubhouse/user/admin-page">Join the Admins</a>
+        <% if (typeof user!=='undefined') { %>
+        <a href="/clubhouse/user/log-out">Log Out</a>
+        <% } %>
+      </nav>
+      <section id="dynamic-page">
+        <h1 style="text-align: center;"><%= title %></h1>
+        <%- page %>
+      </section>
+    </main>
+    <footer>
+      <p>Copyright © 2024 ValerioL94</p>
+      <a href="https://github.com/ValerioL94">
+        <img class="logo pulse" src="/images/github-mark.svg" alt="github logo" />
+      </a>
+    </footer>
+  </div>
+</body>
+
 </html>
