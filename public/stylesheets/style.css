@@ -10,10 +10,9 @@ body {
 }
 
 #content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  display: grid;
+  grid-template-rows: auto 100% auto;
+  min-height: 100%;
 }
 a {
   color: rgb(70, 70, 255);
@@ -38,12 +37,11 @@ header a:hover,
 header a:focus {
   padding: inherit;
 }
-main {
-  height: 100%;
-}
 
 nav {
   display: flex;
+  position: sticky;
+  top: 0;
 }
 
 nav a {
