@@ -14,10 +14,11 @@
   <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-<p>See you next time.</p>
+<p>You're not ready to join the club, go <a href="/">back</a>.</p>
 <%- include('./partials/errors-list') %>
 <% } %>
 <% } else { %>
 <p>Welcome to the Club.</p>
+<a href="/">Go back to homepage</a>
 <% } %>
 <% } %>

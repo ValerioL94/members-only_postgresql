@@ -14,10 +14,11 @@
   <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-  <p>If you don't know the password, you can go.</p>
+  <p>If you don't know the password, you can go <a href="/">home</a>.</p>
 <%- include('./partials/errors-list') %>
 <% } %>
 <% } else { %>
 <p>Remember, with great power comes great responsibility</p>
+<a href="/">Go back to homepage</a>
 <% } %>
 <% } %>
