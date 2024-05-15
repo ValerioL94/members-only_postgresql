@@ -1,7 +1,7 @@
 <%- contentFor('page') %>
 
 <% if (typeof user==='undefined' || user.status==='Anonymous') { %>
-<p>Only exclusive-members can be admins...provided they know the password.</p>
+<p>Only exclusive-members can become admins...provided they know the password.</p>
 <% } else { %>
 <% if (user.status==='Exclusive-member') { %>
   <% if (typeof errors==='undefined') { %>
