@@ -3,12 +3,14 @@
 <% if (typeof user!=='undefined') { %>
 <h2>User:<span style="color: crimson;"> <%= user.fullname %></span> - Status: <span style="color: crimson;"> <%= user.status %></span></h2>
 <% if (user.status==='Anonymous') { %>
- <p>Wanna join the club? You can try <a href="/clubhouse/user/join-the-club">here</a>.</p>
+<p>Wanna join the club? You can try <a href="/clubhouse/user/join-the-club">here</a>.</p>
 <% } %>
 <% } %>
 <% if (typeof posts!=='undefined') { %>
 <p>WiP</p>
 <% } else { %>
-<p>There are no posts?!</p>
-<p>Be the first to add one! <a href="/clubhouse/post/create-post">New post</a></p>
+<p>There are no messages?!</p>
+<% if (typeof user !=='undefined') { %>
+<p>Be the first to add one! <a href="/clubhouse/post/new-message">Add message</a></p>
+<% } %>
 <% } %>
