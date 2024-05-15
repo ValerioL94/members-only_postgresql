@@ -9,7 +9,7 @@ const UserSchema = new Schema({
   status: {
     type: String,
     required: true,
-    enum: ['anon', 'member', 'admin'],
+    enum: ['Anonymous', 'Exclusive-member', 'Admin'],
     default: 'anon',
   },
 });
