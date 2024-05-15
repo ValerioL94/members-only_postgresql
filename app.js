@@ -44,22 +44,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.session());
 
 passport.use(
-  new LocalStrategy(async (username, password, done) => {
-    try {
-      const user = await User.findOne({ username: username });
-      if (!user) {
-        return done(null, false, { message: 'Incorrect username' });
+  new LocalStrategy(
+    { usernameField: 'email' },
+    async (username, password, done) => {
+      try {
+        const user = await User.findOne({ email: username });
+        if (!user) {
+          return done(null, false, { message: 'Incorrect E-mail' });
+        }
+        const match = await bcrypt.compare(password, user.password);
+        if (!match) {
+          // passwords do not match!
+          return done(null, false, { message: 'Incorrect password' });
+        }
+        return done(null, user);
+      } catch (error) {
+        return done(error);
       }
-      const match = await bcrypt.compare(password, user.password);
-      if (!match) {
-        // passwords do not match!
-        return done(null, false, { message: 'Incorrect password' });
-      }
-      return done(null, user);
-    } catch (error) {
-      return done(error);
     }
-  })
+  )
 );
 passport.serializeUser((user, done) => {
   done(null, user.id);
