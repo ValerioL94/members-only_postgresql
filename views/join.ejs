@@ -1,11 +1,10 @@
 <%- contentFor('page') %>
 
 <h1 style="text-align: center"><%= title %></h1>
-
 <% if (typeof user==='undefined') { %>
 <p>You're not even logged in and you wanna join the club? I don't think so.</p>
 <% } else { %>
-<% if (user.status==='anon') { %>
+<% if (user.status==='Anonymous') { %>
 <% if (typeof errors==='undefined') { %>
 <form method="post">
   <div class="form-group">
