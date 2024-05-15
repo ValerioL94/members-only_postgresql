@@ -6,9 +6,9 @@
 <form method="post">
   <div class="form-group">
     <label for="postTitle">Title:</label>
-    <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Hello World" value="<%= typeof post==='undefined' ? '' : post.postTitle %>" required>
+    <input type="text" name="postTitle" id="postTitle" class="form-control" placeholder="Hello World" value="<%= typeof post==='undefined' ? '' : post.title %>" required>
     <label for="comment">Comment:</label>
-    <textarea rows="8" name="comment" id="comment" class="form-control" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed dictum justo, nec dapibus sem. Sed sit amet arcu nec leo ultrices placerat. Aliquam sollicitudin quis ligula quis ullamcorper. Donec scelerisque condimentum turpis sed vestibulum. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec rutrum lacus. Aliquam a congue sem. Suspendisse leo dolor, posuere a enim at, vestibulum venenatis arcu. Integer hendrerit tempus quam in elementum." required><%= typeof post==='undefined' ? '' : post.comment %></textarea>
+    <textarea rows="5" name="comment" id="comment" class="form-control" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed dictum justo, nec dapibus sem. Sed sit amet arcu nec leo ultrices placerat. Aliquam sollicitudin quis ligula quis ullamcorper. Donec scelerisque condimentum turpis sed vestibulum. In hac habitasse platea dictumst. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nec rutrum lacus. Aliquam a congue sem. Suspendisse leo dolor, posuere a enim at, vestibulum venenatis arcu. Integer hendrerit tempus quam in elementum." required><%= typeof post==='undefined' ? '' : post.comment %></textarea>
   </div>
   <button type="submit" class="form-submit">Submit</button>
 </form>
