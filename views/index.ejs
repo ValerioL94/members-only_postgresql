@@ -16,9 +16,8 @@
          </div>
          <p><strong>Title: </strong><%= post.title %></p>
          <p><strong>Comment: </strong><%= post.comment %></p>
-         
       <% if (typeof user!=='undefined' && user.isAdmin) { %>
-        <a href="post.url/delete">DELETE MESSAGE</a>
+        <a href="/clubhouse/post/<%= post.id %>/delete">DELETE THIS MESSAGE</a>
        <% } %>
      </div>
     <% }) %>

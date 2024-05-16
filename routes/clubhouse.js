@@ -18,5 +18,5 @@ router.post('/user/admin-page', user_controller.admin_post);
 
 router.get('/post/new-message', post_controller.create_message_get);
 router.post('/post/new-message', post_controller.create_message_post);
-
+router.get('/post/:id/delete', post_controller.delete_message_get);
 module.exports = router;
