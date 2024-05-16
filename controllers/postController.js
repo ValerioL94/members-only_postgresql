@@ -18,14 +18,16 @@ exports.create_message_post = [
   body('postTitle', 'Title should be at least 1 character')
     .trim()
     .isLength({ min: 1 })
-    .escape(),
+    .escape()
+    .unescape('&#x27;'),
   body(
     'comment',
     'Comment should be at least 1 character and less than 300 characters'
   )
     .trim()
     .isLength({ min: 1, max: 300 })
-    .escape(),
+    .escape()
+    .unescape('&#x27;'),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     const post = new Post({
