@@ -3,6 +3,7 @@
 <% if (typeof user!=='undefined') { %>
 <h2>Welcome back<span style="color: crimson;"> <%= user.fullname %></span></h2>
 <% } else { %>
+  <p>If you're trying to log in and nothing happens, you're probably inserting wrong values. <br> If you don't remember your email or password, your best option is to sign up again =P </p>
 <form method="post">
   <div class="form-group">
     <label for="email">E-mail:</label>
