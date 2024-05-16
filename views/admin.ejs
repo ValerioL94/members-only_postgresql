@@ -1,10 +1,10 @@
 <%- contentFor('page') %>
 
 <% if (typeof user==='undefined' || user.status==='Anonymous') { %>
-<p>Only exclusive-members can become admins...provided they know the password.</p>
+<p>Only exclusive-members can become admins...provided they know the super secret password.</p>
 <% } else { %>
 <% if (user.status==='Exclusive-member') { %>
-  <% if (typeof errors==='undefined') { %>
+<% if (typeof errors==='undefined') { %>
 <form method="post">
   <div class="form-group">
     <label for="adminPassword">Admin password:</label>
@@ -13,7 +13,7 @@
   <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-  <p>You simply don't know the password, you have no reason to be here.</p>
+<p>You simply don't know the password, you have no reason to be here.</p>
 <%- include('./partials/errors_list') %>
 <% } %>
 <% } else { %>

@@ -3,6 +3,7 @@
 <% if (typeof user!=='undefined') { %>
 <h2>Welcome back<span style="color: crimson;"> <%= user.fullname %></span></h2>
 <% } else { %>
+<p><strong>DISCLAIMER: </strong><span style="color: crimson;">This is obviously a test project, there's no need to use your real name/email here (email won't be displayed anyway, so don't worry).</span></p>
 <form method="POST">
   <div class="form-group">
     <label for="first_name">First name:</label>
@@ -14,9 +15,9 @@
     <label for="email">E-mail:</label>
     <input type="email" class="form-control" id="email" name="email" placeholder="johndoe@gmail.com" value="<%= typeof user=='undefined' ? '' : user.email %>" required />
     <label for="password">Password:</label>
-    <input type="password" autocomplete="new-password" class="form-control" id="password" name="password" required />
+    <input type="password" autocomplete="new-password" class="form-control" id="password" name="password" placeholder="minimum 8 characters" required />
     <label for="passwordConfirmation">Confirm password:</label>
-    <input type="password" autocomplete="new-password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" required />
+    <input type="password" autocomplete="new-password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="same as the password" required />
   </div>
   <button class="form-submit" type="submit">Sign Up</button>
 </form>

@@ -1,26 +1,30 @@
 <%- contentFor('page') %>
 
 <% if (typeof user!=='undefined') { %>
-<h2>User:<span style="color: crimson;"> <%= user.fullname %></span> - Status: <span style="color: crimson;"> <%= user.status %></span></h2>
+<h2>User:<span style="color: crimson;"> <%= user.fullname %></span> / Status: <span style="color: crimson;"> <%= user.status %></span></h2>
 <% if (user.status==='Anonymous') { %>
 <p>Wanna join the club? You can try <a href="/clubhouse/user/join-the-club">here</a>.</p>
+<% } %>
+<% if (user.status==='Exclusive-member') { %>
+<p>Wanna join the admins? If you know the password, go <a href="/clubhouse/user/admin-page">here</a>.</p>
 <% } %>
 <% } %>
 <% if (typeof posts!=='undefined' && posts.length) { %>
 <div id="posts-wrapper">
-    <% posts.forEach(post => { %>
-     <div class="user-post">
-         <div style="display: flex; justify-content: space-between;">
-             <p><strong>Author: </strong><%= typeof user!=='undefined' && user!=='Anonymous' ? post.user.fullname : 'Anonymous' %></p>
-             <p><strong>Time: </strong><%= post.timestamp.toLocaleString() %></p>
-         </div>
-         <p><strong>Title: </strong><%= post.title %></p>
-         <p><strong>Comment: </strong><%= post.comment %></p>
-      <% if (typeof user!=='undefined' && user.isAdmin) { %>
-        <a href="/clubhouse/post/<%= post.id %>/delete">DELETE THIS MESSAGE</a>
-       <% } %>
-     </div>
-    <% }) %>
+  <% posts.forEach(post => { %>
+  <div class="user-post">
+    <div style="display: flex; justify-content: space-between;">
+      <p><strong>Author: </strong><%= typeof user!=='undefined' && user.status!=='Anonymous' ? post.user.fullname : 'Anonymous' %></p>
+      <p><strong>Membership status: </strong> <%= typeof user!=='undefined' && user.status!=='Anonymous' ? post.user.status : 'Redacted' %></p>
+      <p><strong>Time: </strong><%= typeof user!=='undefined' && user.status!=='Anonymous' ? post.timestamp.toLocaleString() : 'Redacted' %></p>
+    </div>
+    <p><strong>Title: </strong><%= post.title %></p>
+    <p><strong>Comment: </strong><%= post.comment %></p>
+    <% if (typeof user!=='undefined' && user.isAdmin) { %>
+    <a href="/clubhouse/post/<%= post.id %>/delete">DELETE THIS MESSAGE</a>
+    <% } %>
+  </div>
+  <% }) %>
 </div>
 <% } else { %>
 <p>There are no messages?!</p>
