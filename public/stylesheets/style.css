@@ -11,7 +11,7 @@ body {
 
 #content {
   display: grid;
-  grid-template-rows: auto 100% auto;
+  grid-template-rows: 100px auto 50px;
   min-height: 100%;
 }
 a {
