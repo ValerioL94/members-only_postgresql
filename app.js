@@ -3,36 +3,34 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const mongoose = require('mongoose');
-const mongoDB = process.env.MONGODB_STRING;
 const expressLayouts = require('express-ejs-layouts');
+const db = require('./db/pool');
+const expressSession = require('express-session');
+const pgSession = require('connect-pg-simple')(expressSession);
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcryptjs');
-const session = require('express-session');
-const User = require('./models/user');
-const Post = require('./models/post');
 
-const indexRouter = require('./routes/index');
-const clubhouseRouter = require('./routes/clubhouse');
+const indexRouter = require('./routes/indexRouter');
+const userRouter = require('./routes/userRouter');
+const postRouter = require('./routes/postRouter');
 
 const app = express();
 
-main().catch((err) => console.log(err));
-async function main() {
-  await mongoose.connect(mongoDB);
-}
-
 // view engine setup
-app.set('views', 'views');
+// app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
 app.use(
-  session({
+  expressSession({
+    store: new pgSession({
+      pool: db,
+      createTableIfMissing: true,
+      tableName: 'user_sessions',
+    }),
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
+    cookie: { maxAge: 24 * 60 * 60 * 1000 }, // 1 day
   })
 );
 
@@ -41,41 +39,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./config/passport');
+
 app.use(passport.session());
-
-passport.use(
-  new LocalStrategy(
-    { usernameField: 'email' },
-    async (username, password, done) => {
-      try {
-        const user = await User.findOne({ email: username });
-        if (!user) {
-          return done(null, false, { message: 'Incorrect E-mail' });
-        }
-        const match = await bcrypt.compare(password, user.password);
-        if (!match) {
-          // passwords do not match!
-          return done(null, false, { message: 'Incorrect password' });
-        }
-        return done(null, user);
-      } catch (error) {
-        return done(error);
-      }
-    }
-  )
-);
-passport.serializeUser((user, done) => {
-  done(null, user.id);
-});
-
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findById(id);
-    done(null, user);
-  } catch (error) {
-    done(error);
-  }
-});
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
@@ -83,7 +50,8 @@ app.use((req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/clubhouse', clubhouseRouter);
+app.use('/user', userRouter);
+app.use('/posts', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
