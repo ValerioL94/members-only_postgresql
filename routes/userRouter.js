@@ -11,3 +11,5 @@ router.get('/join-the-club', user_controller.join_get);
 router.post('/join-the-club', user_controller.join_post);
 router.get('/admin-page', user_controller.admin_get);
 router.post('/admin-page', user_controller.admin_post);
+
+module.exports = router;
