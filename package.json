@@ -1,7 +1,7 @@
 {
-  "name": "members-only",
+  "name": "members-only_postgresql",
   "version": "1.0.0",
-  "description": "Building a nodejs/express app where users can read and write posts.",
+  "description": "Building a nodejs/express/postgresql app where users can read and write posts.",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ValerioL94/members-only.git"
+    "url": "git+https://github.com/ValerioL94/members-only_postgresql.git"
   },
   "author": "ValerioL94",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ValerioL94/members-only/issues"
+    "url": "https://github.com/ValerioL94/members-only_postgresql/issues"
   },
-  "homepage": "https://github.com/ValerioL94/members-only#readme",
+  "homepage": "https://github.com/ValerioL94/members-only_postgresql#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-pg-simple": "^9.0.1",
