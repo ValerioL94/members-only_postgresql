@@ -1,7 +1,7 @@
 <%- contentFor('page') %>
 
-<% if (typeof user!=='undefined') { %>
-<h2>Welcome back<span style="color: crimson;"> <%= user.first_name %> <%= user.last_name %></span></h2>
+<% if (locals.user) { %>
+<h2>Welcome back<span style="color: crimson;"> <%= `${user.first_name} ${user.last_name}` %></span></h2>
 <% } else { %>
 <p><strong>DISCLAIMER: </strong><span style="color: crimson;">This is just a test project, there's no need to use your real name/email here (email won't be displayed anyway).</span></p>
 <form method="POST">

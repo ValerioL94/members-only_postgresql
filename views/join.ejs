@@ -1,10 +1,10 @@
 <%- contentFor('page') %>
 
-<% if (typeof user==='undefined') { %>
+<% if (!locals.user) { %>
 <p>You're not even logged in and you wanna join the club? I don't think so.</p>
 <% } else { %>
 <% if (user.status==='Anonymous') { %>
-<% if (typeof errors==='undefined') { %>
+<% if (!locals.errors) { %>
 <form method="post">
   <div class="form-group">
     <label for="secretPassword">What is the name of the first Lord of Cinder?</label>

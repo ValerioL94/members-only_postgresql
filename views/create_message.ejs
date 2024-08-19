@@ -1,6 +1,6 @@
 <%- contentFor('page') %>
 
-<% if (typeof user==='undefined') { %>
+<% if (!locals.user) { %>
 <p>How did you even get here?</p>
 <% } else { %>
 <form method="post">
