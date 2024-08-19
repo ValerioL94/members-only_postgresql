@@ -136,11 +136,26 @@ form {
   border-color: var(--myGreen);
   outline: none;
 }
+
+.gen-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .errors-list {
   color: crimson;
   font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+.errors-list li,
+.gen-container p {
+  width: 100%;
+  max-width: 900px;
+}
 footer {
   display: flex;
   align-items: center;
