@@ -2,7 +2,7 @@ const db = require('./pool');
 
 async function getPosts() {
   const { rows } = await db.query(
-    'SELECT * FROM posts JOIN users ON posts.user_id = users.id;'
+    'SELECT posts.id,posts.title, posts.comment, posts.timestamp, users.first_name, users.last_name, users.status FROM posts JOIN users ON posts.user_id = users.id;'
   );
   return rows;
 }
@@ -15,7 +15,7 @@ async function addPost(post) {
 }
 
 async function deletePost(id) {
-  await db.query('DELETE FROM posts WHERE id = $1;', [id]);
+  await db.query('DELETE FROM posts WHERE posts.id = $1;', [id]);
 }
 
 async function getUserByEmail(email) {
