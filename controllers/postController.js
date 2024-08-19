@@ -1,16 +1,12 @@
-const Post = require('../models/post');
-const User = require('../models/user');
 const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
+const db = require('../db/queries');
 
 exports.index = asyncHandler(async (req, res, next) => {
-  const allPosts = await Post.find()
-    .sort({ timestamp: 1 })
-    .populate('user')
-    .exec();
-  res.render('index', { title: 'Homepage', user: req.user, posts: allPosts });
+  const posts = await db.getPosts();
+  res.render('index', { title: 'Homepage', user: req.user, posts });
 });
-
+/*
 exports.create_message_get = asyncHandler(async (req, res, next) => {
   res.render('create_message', { title: 'New Message', user: req.user });
 });
@@ -53,3 +49,4 @@ exports.delete_message_get = asyncHandler(async (req, res, next) => {
   await Post.findByIdAndDelete(req.params.id);
   res.redirect('/');
 });
+*/
