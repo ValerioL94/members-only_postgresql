@@ -17,15 +17,19 @@
       name="adminPassword"
       required
     />
+    <button type="submit" class="form-submit">Submit</button>
   </div>
-  <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-<p>You don't know the password, you have no reason to be here.</p>
+  <div class="gen-container">
+    <p>You don't know the password, you have no reason to be here.</p>
+  </div>
 <%- include('./partials/errors_list') %>
 <% } %>
 <% } else { %>
-<p>Remember, with great power comes great responsibility.</p>
-<p>You can delete posts now but it doesn't mean that you have to.</p>
+  <div class="gen-container">
+    <p>Remember, with great power comes great responsibility.</p>
+    <p>You can delete posts now but it doesn't mean that you have to.</p>
+  </div>
 <% } %>
 <% } %>
