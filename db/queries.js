@@ -33,7 +33,12 @@ async function getUserById(id) {
   ]);
   return rows[0];
 }
-// createUser
+async function addUser(user) {
+  await db.query(
+    'INSERT INTO users (first_name, last_name, email, password) VALUES($1, $2, $3, $4);',
+    [user.first_name, user.last_name, user.email, user.password]
+  );
+}
 // updateUser
 
 module.exports = {
@@ -42,4 +47,5 @@ module.exports = {
   deletePost,
   getUserByEmail,
   getUserById,
+  addUser,
 };
