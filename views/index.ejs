@@ -3,10 +3,10 @@
 <% if (typeof user!=='undefined') { %>
 <h2>User:<span style="color: crimson;"> <%= user.fullname %></span> / Status: <span style="color: crimson;"> <%= user.status %></span></h2>
 <% if (user.status==='Anonymous') { %>
-<p>Wanna join the club? You can try <a href="/clubhouse/user/join-the-club">here</a>.</p>
+<p>Wanna join the club? You can try <a href="/user/join-the-club">here</a>.</p>
 <% } %>
 <% if (user.status==='Exclusive-member') { %>
-<p>Wanna join the admins? If you know the password, go <a href="/clubhouse/user/admin-page">here</a>.</p>
+<p>Wanna join the admins? If you know the password, go <a href="/user/admin-page">here</a>.</p>
 <% } %>
 <% } %>
 <% if (typeof posts!=='undefined' && posts.length) { %>
@@ -21,14 +21,14 @@
     <p><strong>Title: </strong><%= post.title %></p>
     <p><strong>Comment: </strong><%= post.comment %></p>
     <% if (typeof user!=='undefined' && user.isAdmin) { %>
-    <a href="/clubhouse/post/<%= post.id %>/delete">DELETE THIS MESSAGE</a>
+    <a href="/post/<%= post.id %>/delete">DELETE THIS MESSAGE</a>
     <% } %>
   </div>
   <% }) %>
 </div>
 <% } else { %>
-<p>There are no messages?!</p>
+<p>There are no messages.</p>
 <% if (typeof user !=='undefined') { %>
-<p>Be the first to add one! <a href="/clubhouse/post/new-message">Add message</a></p>
+<p>Be the first to add one! <a href="/post/new-message">Add message</a></p>
 <% } %>
 <% } %>
