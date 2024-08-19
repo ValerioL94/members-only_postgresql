@@ -3,6 +3,7 @@ const { body, validationResult } = require('express-validator');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const db = require('../db/queries');
+const { SECRET_PSW } = process.env;
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
   res.render('sign_up', { title: 'Sign-up', user: req.user });
@@ -85,17 +86,18 @@ exports.log_out_get = asyncHandler(async (req, res, next) => {
     res.redirect('/');
   });
 });
-/*
+
 exports.join_get = asyncHandler(async (req, res, next) => {
   res.render('join.ejs', { title: 'Join the Club', user: req.user });
 });
+
 exports.join_post = [
   body('secretPassword', 'Wrong secret password')
     .trim()
     .isLength({ min: 1 })
     .toLowerCase()
     .escape()
-    .equals(process.env.SECRET_PSW),
+    .equals(SECRET_PSW),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -105,7 +107,7 @@ exports.join_post = [
         errors: errors.array(),
       });
     } else {
-      await User.findByIdAndUpdate(req.user.id, { status: 'Exclusive-member' });
+      await db.updateUser('Exclusive Member', req.user.id);
       res.redirect('join-the-club');
     }
   }),
@@ -130,12 +132,8 @@ exports.admin_post = [
         errors: errors.array(),
       });
     } else {
-      await User.findByIdAndUpdate(req.user.id, {
-        status: 'Admin',
-        is_admin: true,
-      });
+      await db.updateUser('Admin', req.user.id);
       res.redirect('admin-page');
     }
   }),
 ];
-*/
