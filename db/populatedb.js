@@ -1,8 +1,10 @@
+#! /usr/bin/env node
+
 const { Client } = require('pg');
 const { CONNECTION_STRING } = process.env;
 
 const SQL1 = `
-CREATE TYPE IF NOT EXISTS status AS ENUM ('Anonymous', 'Exclusive Member', 'Admin');
+CREATE TYPE status AS ENUM ('Anonymous', 'Exclusive Member', 'Admin');
 
 CREATE TABLE IF NOT EXISTS users (
 id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -10,7 +12,7 @@ first_name VARCHAR(50) NOT NULL,
 last_name VARCHAR(50) NOT NULL,
 email VARCHAR(50) NOT NULL UNIQUE,
 password VARCHAR(100) NOT NULL,
-status status DEFAULT ('Anonymous'),
+status status DEFAULT 'Anonymous'
 );
 `;
 
