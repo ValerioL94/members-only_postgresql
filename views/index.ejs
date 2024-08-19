@@ -1,7 +1,7 @@
 <%- contentFor('page') %>
 
 <% if (typeof user!=='undefined') { %>
-<h2>User:<span style="color: crimson;"> <%= user.fullname %></span> / Status: <span style="color: crimson;"> <%= user.status %></span></h2>
+<h2>User:<span style="color: crimson;"> <%= `${user.first_name} ${user.last_name}` %></span> / Status: <span style="color: crimson;"> <%= user.status %></span></h2>
 <% if (user.status==='Anonymous') { %>
 <p>Wanna join the club? You can try <a href="/user/join-the-club">here</a>.</p>
 <% } %>

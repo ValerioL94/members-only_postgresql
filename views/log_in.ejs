@@ -1,17 +1,20 @@
 <%- contentFor('page') %>
 
 <% if (typeof user!=='undefined') { %>
-<h2>Welcome back<span style="color: crimson;"> <%= user.fullname %></span></h2>
+<h2>Welcome back<span style="color: crimson;"> <%= `${user.first_name} ${user.last_name}` %></span></h2>
 <% } else { %>
-  <p>If you're trying to log in and nothing happens, you're probably inserting wrong values. <br> If you don't remember your email or password, your best option is to sign up again =P </p>
 <form method="post">
   <div class="form-group">
     <label for="email">E-mail:</label>
-    <input type="email" class="form-control" name="email" id="email" placeholder="johndoe@gmail.com" required />
+    <input value='<%= locals.email %>' type="email" class="form-control" name="email" id="email" placeholder="johndoe@gmail.com" required />
     <label for="password">Password:</label>
     <input type="password" autocomplete="current-password" class="form-control" name="password" id="password" required />
   </div>
   <button class="form-submit" type="submit">Log in</button>
 </form>
-<%- include('./partials/errors_list') %>
+<% if (typeof errors!=='undefined') { %>
+  <ul class="errors-list">
+    <li><%= errors %></li>
+  </ul>
+  <% } %>
 <% } %>
