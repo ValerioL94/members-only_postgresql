@@ -17,15 +17,19 @@
       name="secretPassword"
       required
     />
+    <button type="submit" class="form-submit">Submit</button>
   </div>
-  <button type="submit" class="form-submit">Submit</button>
 </form>
 <% } else { %>
-<p>You're not ready to join the club.</p>
+  <div class="gen-container">
+    <p>You're not ready to join the club.</p>
+  </div>
 <%- include('./partials/errors_list') %>
 <% } %>
 <% } else { %>
-<p>Welcome to the Club.</p>
-<p>Posts are no longer anonymous to you.</p>
+  <div class="gen-container">
+    <p>Welcome to the Club.</p>
+    <p>Posts are no longer anonymous to you.</p>
+  </div>
 <% } %>
 <% } %>
