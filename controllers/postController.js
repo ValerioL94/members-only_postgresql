@@ -6,10 +6,11 @@ exports.index = asyncHandler(async (req, res, next) => {
   const posts = await db.getPosts();
   res.render('index', { title: 'Homepage', user: req.user, posts });
 });
-/*
+
 exports.create_message_get = asyncHandler(async (req, res, next) => {
   res.render('create_message', { title: 'New Message', user: req.user });
 });
+
 exports.create_message_post = [
   body('postTitle', 'Title should be at least 1 character')
     .trim()
@@ -26,12 +27,11 @@ exports.create_message_post = [
     .unescape('&#x27;'),
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
-    const post = new Post({
+    const post = {
       title: req.body.postTitle,
       comment: req.body.comment,
-      user: req.user.id,
-      timestamp: new Date(),
-    });
+      user_id: req.user.id,
+    };
     if (!errors.isEmpty()) {
       return res.render('create_message', {
         title: 'New Message',
@@ -40,13 +40,12 @@ exports.create_message_post = [
         errors: errors.array(),
       });
     }
-    await post.save();
+    await db.addPost(post);
     res.redirect('/');
   }),
 ];
 
 exports.delete_message_get = asyncHandler(async (req, res, next) => {
-  await Post.findByIdAndDelete(req.params.id);
+  await db.deletePost(req.params.id);
   res.redirect('/');
 });
-*/
