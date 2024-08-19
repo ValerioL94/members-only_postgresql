@@ -1,13 +1,11 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><%= title %></title>
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
-
 <body>
   <div id="content">
     <header>
@@ -16,16 +14,17 @@
     <main>
       <nav>
         <a href="/">Home</a>
-        <% if (typeof user==='undefined') { %>
+        <% if (!locals.user) { %>
         <a href="/user/sign-up">Sign up</a>
         <a href="/user/log-in">Log in</a>
         <% } %>
-        <% if (typeof user!=='undefined') { %>
+        <% if (locals.user) { %>
         <a href="/post/new-message">Add message</a>
-        <% } %>
-        <a href="/user/join-the-club">Join the Club</a>
+        <% if (user.status === 'Anonymous') { %>
+          <a href="/user/join-the-club">Join the Club</a>
+          <% } else if ( user.status === 'Exclusive Member') { %>
         <a href="/user/admin-page">Join the Admins</a>
-        <% if (typeof user!=='undefined') { %>
+        <% } %>
         <a href="/user/log-out">Log Out</a>
         <% } %>
       </nav>
@@ -42,5 +41,4 @@
     </footer>
   </div>
 </body>
-
 </html>

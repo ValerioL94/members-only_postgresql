@@ -1,18 +1,18 @@
 <%- contentFor('page') %>
 
-<% if (typeof user!=='undefined') { %>
+<% if (locals.user) { %>
 <h2>Welcome back<span style="color: crimson;"> <%= `${user.first_name} ${user.last_name}` %></span></h2>
 <% } else { %>
 <form method="post">
   <div class="form-group">
     <label for="email">E-mail:</label>
-    <input value='<%= locals.email %>' type="email" class="form-control" name="email" id="email" placeholder="johndoe@gmail.com" required />
+    <input type="email" class="form-control" name="email" id="email" placeholder="johndoe@gmail.com" required />
     <label for="password">Password:</label>
     <input type="password" autocomplete="current-password" class="form-control" name="password" id="password" required />
   </div>
   <button class="form-submit" type="submit">Log in</button>
 </form>
-<% if (typeof errors!=='undefined') { %>
+<% if (locals.errors) { %>
   <ul class="errors-list">
     <li><%= errors %></li>
   </ul>

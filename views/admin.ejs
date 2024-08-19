@@ -1,23 +1,25 @@
 <%- contentFor('page') %>
 
-<% if (typeof user==='undefined' || user.status==='Anonymous') { %>
-<p>Only exclusive-members can become admins...provided they know the super secret password.</p>
+<% if (!locals.user) { %>
+<p>You should not be here.</p>
 <% } else { %>
-<% if (user.status==='Exclusive-member') { %>
-<% if (typeof errors==='undefined') { %>
-<form method="post">
-  <div class="form-group">
-    <label for="adminPassword">Admin password:</label>
-    <input type="password" class="form-control" id="adminPassword" name="adminPassword" required>
-  </div>
-  <button type="submit" class="form-submit">Submit</button>
-</form>
+<% if (user.status === 'Anonymous') { %>
+<p>Only exclusive-members can become admins.</p>
+<% } else if (user.status ==='Exclusive Member') { %>
+  <% if (!locals.errors) { %>
+    <form method="post">
+      <div class="form-group">
+        <label for="adminPassword">Admin password:</label>
+        <input type="password" class="form-control" id="adminPassword" name="adminPassword" required>
+      </div>
+      <button type="submit" class="form-submit">Submit</button>
+    </form>
+    <% } else { %>
+    <p>You don't know the password, you have no reason to be here.</p>
+    <%- include('./partials/errors_list') %>
+    <% } %>
 <% } else { %>
-<p>You simply don't know the password, you have no reason to be here.</p>
-<%- include('./partials/errors_list') %>
-<% } %>
-<% } else { %>
-<p>Remember, with great power comes great responsibility.</p>
-<p>You can delete posts now but it doesn't mean that you have to.</p>
-<% } %>
+  <p>Remember, with great power comes great responsibility.</p>
+  <p>You can delete posts now but it doesn't mean that you have to.</p>
+    <% } %>
 <% } %>
