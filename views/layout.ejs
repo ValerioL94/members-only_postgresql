@@ -17,16 +17,16 @@
       <nav>
         <a href="/">Home</a>
         <% if (typeof user==='undefined') { %>
-        <a href="/clubhouse/user/sign-up">Sign up</a>
-        <a href="/clubhouse/user/log-in">Log in</a>
+        <a href="/user/sign-up">Sign up</a>
+        <a href="/user/log-in">Log in</a>
         <% } %>
         <% if (typeof user!=='undefined') { %>
-        <a href="/clubhouse/post/new-message">Add message</a>
+        <a href="/post/new-message">Add message</a>
         <% } %>
-        <a href="/clubhouse/user/join-the-club">Join the Club</a>
-        <a href="/clubhouse/user/admin-page">Join the Admins</a>
+        <a href="/user/join-the-club">Join the Club</a>
+        <a href="/user/admin-page">Join the Admins</a>
         <% if (typeof user!=='undefined') { %>
-        <a href="/clubhouse/user/log-out">Log Out</a>
+        <a href="/user/log-out">Log Out</a>
         <% } %>
       </nav>
       <section id="dynamic-page">
