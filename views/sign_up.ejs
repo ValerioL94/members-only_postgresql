@@ -7,12 +7,9 @@
   >
 </h2>
 <% } else { %>
-<p>
-  <strong>DISCLAIMER: </strong
-  ><span style="color: crimson"
-    >This is just a test project, there's no need to use your real name/email
-    here (email won't be displayed anyway).</span
-  >
+<p style="text-align: center; color: crimson;">
+    This is just a test project, there's no need to use your real name/email
+    here (email won't be displayed anyway).
 </p>
 <form method="POST">
   <div class="form-group">
@@ -36,8 +33,6 @@
       value="<%= typeof newUser=='undefined' ? '' : newUser.last_name %>"
       required
     />
-  </div>
-  <div class="form-group">
     <label for="email">E-mail:</label>
     <input
       type="email"
@@ -68,8 +63,6 @@
       placeholder="same as password"
       required
     />
-  </div>
-  <div>
     <button class="form-submit" type="submit">Sign Up</button>
   </div>
 </form>

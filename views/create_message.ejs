@@ -16,8 +16,8 @@
       required
     />
     <label for="comment">Comment:</label>
-    <textarea
-      rows="5"
+    <textarea style="resize: vertical;"
+      rows="10"
       name="comment"
       id="comment"
       class="form-control"
@@ -26,8 +26,8 @@
     >
 <%= !locals.post ? '' : post.comment %></textarea
     >
-  </div>
   <button type="submit" class="form-submit">Submit</button>
+  </div>
 </form>
 <% } %>
 <%- include('./partials/errors_list') %>

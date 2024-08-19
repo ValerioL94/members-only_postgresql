@@ -1,3 +1,6 @@
+:root {
+  --myGreen: lightseagreen;
+}
 html,
 body {
   height: 100%;
@@ -27,9 +30,10 @@ a:focus {
 }
 header {
   text-align: center;
-  border-bottom: 2px solid grey;
-  background-color: lightseagreen;
+  border-bottom: 2px solid black;
+  background-color: var(--myGreen);
 }
+
 header a {
   color: black;
 }
@@ -48,11 +52,12 @@ nav a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 30px;
+  min-height: 25px;
+  padding: 3px;
   width: 100%;
   border-width: 0px 1px 2px 1px;
   border-style: solid;
-  border-color: grey;
+  border-color: black;
   color: black;
   background-color: antiquewhite;
 }
@@ -60,21 +65,44 @@ nav a {
 #dynamic-page {
   padding: 25px;
 }
+#dynamic-title {
+  text-align: center;
+}
+
 #posts-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 .user-post {
-  border: 2px solid black;
+  border: 2px solid var(--myGreen);
+  box-shadow: 0px 5px 10px 0px black;
   border-radius: 10px;
   padding: 15px;
-  align-self: center;
-  width: 800px;
+  width: 100%;
+  max-width: 900px;
 }
 
+.user-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .form-group {
   width: 100%;
+  max-width: 900px;
+  border: 2px solid var(--myGreen);
+  box-shadow: 0px 5px 10px 0px black;
+  border-radius: 10px;
+  padding: 15px;
 }
 .form-control {
   box-sizing: border-box;
@@ -88,7 +116,7 @@ nav a {
 }
 .form-control:hover,
 .form-control:focus {
-  border: 2px solid lightseagreen;
+  border: 2px solid var(--myGreen);
   outline: none;
 }
 
@@ -103,9 +131,9 @@ nav a {
 }
 .form-submit:hover,
 .form-submit:focus {
-  background-color: lightseagreen;
+  background-color: var(--myGreen);
   color: white;
-  border-color: lightseagreen;
+  border-color: var(--myGreen);
   outline: none;
 }
 .errors-list {
@@ -118,8 +146,8 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border-top: 2px solid grey;
-  background-color: lightseagreen;
+  border-top: 2px solid black;
+  background-color: var(--myGreen);
 }
 
 .logo {
