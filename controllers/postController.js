@@ -46,6 +46,10 @@ exports.create_message_post = [
 ];
 
 exports.delete_message_get = asyncHandler(async (req, res, next) => {
-  await db.deletePost(req.params.id);
-  res.redirect('/');
+  if (req.user && req.user.status === 'Admin') {
+    await db.deletePost(req.params.id);
+    res.redirect('/');
+  } else {
+    throw new Error('Access Denied');
+  }
 });
