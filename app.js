@@ -16,7 +16,6 @@ const postRouter = require('./routes/postRouter');
 const app = express();
 
 // view engine setup
-// app.set('views', 'views');
 app.set('view engine', 'ejs');
 app.use(expressLayouts);
 
@@ -51,7 +50,7 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
-app.use('/posts', postRouter);
+app.use('/post', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,10 +1,10 @@
 const db = require('./pool');
 
 async function getPosts() {
-  const posts = await db.query(
+  const { rows } = await db.query(
     'SELECT * FROM posts JOIN users ON posts.user_id = users.id;'
   );
-  return posts;
+  return rows;
 }
 
 async function addPost(post) {
